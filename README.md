@@ -1,8 +1,8 @@
-# Mox ERC20
+# Mox Stablecoin
 
 This is part of the Cyfrin Updraft Vyper Course. 
 
-- [Mox ERC20](#mox-erc20)
+- [Mox Stablecoin](#mox-stablecoin)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
