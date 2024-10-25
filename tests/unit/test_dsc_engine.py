@@ -1,11 +1,12 @@
-from script.mocks.deploy_collateral import deploy_collateral
-from src import dsc_engine
-from src.mocks import mock_more_debt_dsc
 import boa
 import pytest
 from eth.codecs.abi.exceptions import EncodeError
 from eth_utils import to_wei
-from tests.conftest import COLLATERAL_AMOUNT, AMOUNT_TO_MINT, COLLATERAL_TO_COVER
+
+from script.mocks.deploy_collateral import deploy_collateral
+from src import dsc_engine
+from src.mocks import mock_more_debt_dsc
+from tests.conftest import AMOUNT_TO_MINT, COLLATERAL_AMOUNT, COLLATERAL_TO_COVER
 
 MIN_HEALTH_FACTOR = to_wei(1, "ether")
 LIQUIDATION_THRESHOLD = 50

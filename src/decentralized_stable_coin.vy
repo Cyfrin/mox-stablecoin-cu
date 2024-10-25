@@ -23,9 +23,19 @@ SYMBOL: constant(String[5]) = "DSC"
 DECIMALS: constant(uint8) = 18
 EIP712_VERSOIN: constant(String[20]) = "1"
 
+
 @deploy
 def __init__():
     ow.__init__()
     erc20.__init__(NAME, SYMBOL, DECIMALS, NAME, EIP712_VERSOIN)
 
-exports: (erc20.IERC20, erc20.IERC20Detailed, erc20.burn_from, erc20.mint, erc20.set_minter, ow.owner, ow.transfer_ownership)
+
+exports: (
+    erc20.IERC20,
+    erc20.IERC20Detailed,
+    erc20.burn_from,
+    erc20.mint,
+    erc20.set_minter,
+    ow.owner,
+    ow.transfer_ownership,
+)

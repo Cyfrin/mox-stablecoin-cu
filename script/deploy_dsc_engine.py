@@ -1,6 +1,7 @@
-from src import dsc_engine
-from moccasin.config import get_active_network
 from moccasin.boa_tools import VyperContract
+from moccasin.config import get_active_network
+
+from src import dsc_engine
 
 
 def deploy_dsc_engine(dsc: VyperContract):

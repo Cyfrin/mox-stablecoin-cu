@@ -1,9 +1,10 @@
-from script.deploy_dsc_engine import deploy_dsc_engine
-from moccasin.config import get_active_network
-import pytest
 import boa
+import pytest
 from eth_account import Account
 from eth_utils import to_wei
+from moccasin.config import get_active_network
+
+from script.deploy_dsc_engine import deploy_dsc_engine
 
 BALANCE = to_wei(10, "ether")
 COLLATERAL_AMOUNT = to_wei(10, "ether")

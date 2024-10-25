@@ -1,6 +1,7 @@
-from src.mocks import mock_token
 from moccasin.boa_tools import VyperContract
 from moccasin.config import get_active_network
+
+from src.mocks import mock_token
 
 
 def deploy_collateral() -> VyperContract:

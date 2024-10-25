@@ -5,9 +5,11 @@
 @title AggregatorV3Interface
 """
 
+
 @external
 def updateAnswer(_newAnswer: int256):
     ...
+
 
 @external
 @view
@@ -39,5 +41,3 @@ def getRoundData(
 @view
 def latestRoundData() -> (uint80, int256, uint256, uint256, uint80):
     ...
-
-

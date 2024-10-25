@@ -1,18 +1,20 @@
-from hypothesis.stateful import (
-    RuleBasedStateMachine,
-    rule,
-    initialize,
-    invariant,
-)
-from hypothesis import assume, settings, strategies as st
-from moccasin.strategies import strategy
-from script.deploy_dsc_engine import deploy_dsc_engine
-from script.deploy_dsc import deploy_dsc
-from moccasin.config import get_active_network
-from boa.util.abi import Address
 import boa
+from boa.util.abi import Address
 from eth.constants import ZERO_ADDRESS
 from eth_utils import to_wei
+from hypothesis import assume, settings
+from hypothesis import strategies as st
+from hypothesis.stateful import (
+    RuleBasedStateMachine,
+    initialize,
+    invariant,
+    rule,
+)
+from moccasin.config import get_active_network
+from moccasin.strategies import strategy
+
+from script.deploy_dsc import deploy_dsc
+from script.deploy_dsc_engine import deploy_dsc_engine
 
 USERS_SIZE = 10
 COLLATERAL_SIZE = 2

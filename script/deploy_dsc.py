@@ -1,5 +1,6 @@
-from src import decentralized_stable_coin
 from moccasin.config import get_active_network
+
+from src import decentralized_stable_coin
 
 
 def deploy_dsc():

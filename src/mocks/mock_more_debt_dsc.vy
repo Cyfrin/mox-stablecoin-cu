@@ -4,17 +4,21 @@
 @ license MIT
 """
 from ethereum.ercs import IERC20
+
 implements: IERC20
 
 from ethereum.ercs import IERC20Detailed
+
 implements: IERC20Detailed
 
 from src.interfaces import AggregatorV3Interface
 
 from snekmate.auth import ownable as ow
+
 initializes: ow
 
 from snekmate.tokens import erc20
+
 initializes: erc20[ownable := ow]
 
 # Constants
@@ -26,7 +30,8 @@ EIP712_VERSION: constant(String[20]) = "1"
 # State Variables
 mock_aggregator: public(AggregatorV3Interface)
 
-@deploy 
+
+@deploy
 def __init__(_mock_aggregator: address):
     """
     @notice Contract constructor
@@ -35,6 +40,7 @@ def __init__(_mock_aggregator: address):
     ow.__init__()
     erc20.__init__(NAME, SYMBOL, DECIMALS, NAME, EIP712_VERSION)
     self.mock_aggregator = AggregatorV3Interface(_mock_aggregator)
+
 
 @external
 def burn_from(_from: address, _amount: uint256):
@@ -47,4 +53,11 @@ def burn_from(_from: address, _amount: uint256):
     erc20._burn(_from, _amount)
 
 
-exports: (erc20.IERC20, erc20.IERC20Detailed, erc20.mint, erc20.set_minter, ow.owner, ow.transfer_ownership)
+exports: (
+    erc20.IERC20,
+    erc20.IERC20Detailed,
+    erc20.mint,
+    erc20.set_minter,
+    ow.owner,
+    ow.transfer_ownership,
+)
