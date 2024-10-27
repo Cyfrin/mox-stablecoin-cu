@@ -11,7 +11,7 @@ from hypothesis.stateful import (
     rule,
 )
 from moccasin.config import get_active_network
-from moccasin.strategies import strategy
+from boa.test.strategies import strategy
 
 from script.deploy_dsc import deploy_dsc
 from script.deploy_dsc_engine import deploy_dsc_engine
