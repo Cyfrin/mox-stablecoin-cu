@@ -4,6 +4,10 @@
 @license MIT
 @title AggregatorV3Interface
 """
+@external 
+def latestAnswer() -> int256:
+    ...
+
 
 
 @external
