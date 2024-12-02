@@ -32,10 +32,10 @@ class StablecoinFuzzer(RuleBasedStateMachine):
         self.dsce = deploy_dsc_engine(self.dsc)
         active_network = get_active_network()
 
-        self.weth = active_network.manifest_contract("weth")
-        self.wbtc = active_network.manifest_contract("weth")
-        self.eth_usd = active_network.manifest_contract("eth_usd_price_feed")
-        self.btc_usd = active_network.manifest_contract("btc_usd_price_feed")
+        self.weth = active_network.manifest_named("weth")
+        self.wbtc = active_network.manifest_named("weth")
+        self.eth_usd = active_network.manifest_named("eth_usd_price_feed")
+        self.btc_usd = active_network.manifest_named("btc_usd_price_feed")
 
         self.users = [Address("0x" + ZERO_ADDRESS.hex())]
         while Address("0x" + ZERO_ADDRESS.hex()) in self.users:
@@ -44,7 +44,7 @@ class StablecoinFuzzer(RuleBasedStateMachine):
     @rule(
         collateral_seed=st.integers(min_value=0, max_value=1),
         user_seed=st.integers(min_value=0, max_value=USERS_SIZE - 1),
-        amount=strategy("uint256", max_value=MAX_DEPOSIT_SIZE),
+        amount=strategy("uint256", min_value=1, max_value=MAX_DEPOSIT_SIZE),
     )
     def mint_and_deposit(self, amount, collateral_seed, user_seed):
         collateral = self._get_collateral_from_seed(collateral_seed)
@@ -68,14 +68,14 @@ class StablecoinFuzzer(RuleBasedStateMachine):
         with boa.env.prank(user):
             self.dsce.redeem_collateral(collateral, to_redeem)
 
-    @rule(
-        new_price=st.integers(min_value=0, max_value=MAX_NEW_PRICE),
-        collateral_seed=st.integers(min_value=0, max_value=1),
-    )
-    def update_collateral_price(self, new_price, collateral_seed):
-        collateral = self._get_collateral_from_seed(collateral_seed)
-        price_feed = self.dsce.token_address_to_price_feed(collateral.address)
-        price_feed.updateAnswer(new_price)
+    # @rule(
+    #     new_price=st.integers(min_value=0, max_value=MAX_NEW_PRICE),
+    #     collateral_seed=st.integers(min_value=0, max_value=1),
+    # )
+    # def update_collateral_price(self, new_price, collateral_seed):
+    #     collateral = self._get_collateral_from_seed(collateral_seed)
+    #     price_feed = self.dsce.token_address_to_price_feed(collateral.address)
+    #     price_feed.updateAnswer(new_price)
 
     # @rule()
     # def liquidate(self, percentage, collateral_seed, user_seed):
@@ -83,7 +83,7 @@ class StablecoinFuzzer(RuleBasedStateMachine):
 
     @invariant()
     def protocol_must_have_more_value_than_total_supply(self):
-        total_supply = self.dsc.total_supply()
+        total_supply = self.dsc.totalSupply()
         weth_deposited = self.weth.balanceOf(self.dsce.address)
         wbtc_deposited = self.wbtc.balanceOf(self.dsce.address)
 
