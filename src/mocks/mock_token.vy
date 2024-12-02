@@ -1,7 +1,7 @@
+# pragma version 0.4.0
 """
-@ version 0.4.0
-@ title mock_token
-@ license MIT
+@title mock_token
+@license MIT
 """
 # @dev We import and implement the `IERC20` interface,
 # which is a built-in interface of the Vyper compiler.
