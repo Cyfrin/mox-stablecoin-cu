@@ -1,7 +1,7 @@
+# pragma version 0.4.0
 """
-@ version 0.4.0
-@ license MIT
-@ title MockV3Aggregator
+@license MIT
+@title MockV3Aggregator
 """
 
 DECIMALS: immutable(uint8)
