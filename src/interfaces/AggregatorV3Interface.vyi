@@ -5,6 +5,7 @@
 @title AggregatorV3Interface
 """
 @external 
+@view
 def latestAnswer() -> int256:
     ...
 
