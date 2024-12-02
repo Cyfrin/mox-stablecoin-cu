@@ -47,7 +47,7 @@ event CollateralDeposited:
 
 
 event CollateralRedeemed:
-    redeemed_from: indexed(address)
+    token: indexed(address)
     amount_collateral: indexed(uint256)
     _from: address
     _to: address
@@ -249,7 +249,7 @@ def _redeem_collateral(
     self.user_to_token_address_to_amount_deposited[_from][
         token_collateral_address
     ] -= amount_collateral
-    log CollateralRedeemed(_from, amount_collateral, _from, _to)
+    log CollateralRedeemed(token_collateral_address, amount_collateral, _from, _to)
     success: bool = extcall IERC20(token_collateral_address).transfer(
         _to, amount_collateral
     )
