@@ -58,14 +58,20 @@ fork = true
 explorer_type = "zksyncexplorer"
 explorer_url = "https://zksync2-mainnet-explorer.zksync.io"
 
+[networks.sepolia-fork]
+url = "$SEPOLIA_RPC_URL"
+chain_id = 11155111
+prompt_live = false
+fork = true
+
 # ------------------------------------------------------------------
 #                       NETWORK CONTRACTS
 # ------------------------------------------------------------------
 [networks.zksync-sepolia.contracts]
 eth_usd_price_feed = { address = "0xfEefF7c3fB57d18C5C6Cdd71e45D2D0b4F9377bF" }
 btc_usd_price_feed = { address = "0x95Bc57e794aeb02E4a16eff406147f3ce2531F83" }
-# TODO: Get these addresses
-# weth = { address = "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714" }
+weth = { address = "0xdd13E55209Fd76AfE204dBda4007C227904f0a81" }
+wbtc = { address = "0xE544cAd11e108775399358Bd0790bb72c9e3AD9E" }
 
 [networks.zksync.contracts]
 eth_usd_price_feed = { address = "0xfEefF7c3fB57d18C5C6Cdd71e45D2D0b4F9377bF" }
