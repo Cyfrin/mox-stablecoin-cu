@@ -8,4 +8,5 @@ dependencies = [
     "mamushi>=0.0.3",
     "snekmate>=0.1.0",
     "titanoboa>=0.2.4",
+    "vyper>=0.4.0",
 ]
