@@ -1,5 +1,5 @@
+# pragma version >=0.4.0
 """
-@ version 0.4.0
 @ license MIT
 @ title Decentralized Stable Coin
 @ dev Follows the ERC-20 token standard as defined at

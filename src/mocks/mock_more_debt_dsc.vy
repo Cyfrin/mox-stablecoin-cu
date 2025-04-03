@@ -1,5 +1,5 @@
+# pragma version >=0.4.0
 """
-@ version 0.4.0
 @ title MockMoreDebtDSC
 @ license MIT
 """
